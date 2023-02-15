@@ -1,4 +1,4 @@
-import ImageWrapper from "./imageWrapper"
+import ImageWrapper from './imageWrapper'
 
-export {ImageWrapper}
+export { ImageWrapper }
 export default ImageWrapper

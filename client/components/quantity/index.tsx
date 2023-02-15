@@ -1,4 +1,4 @@
 import Quantity from './quantity'
 
-export {Quantity}
+export { Quantity }
 export default Quantity

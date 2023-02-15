@@ -1,25 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
-export function useScrollHandler() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [lastScrollPos, setLastScrollPos] = useState(0);
+export function useScrollHandler () {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [lastScrollPos, setLastScrollPos] = useState(0)
 
   const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
+    const currentScrollPos = window.pageYOffset
     if (currentScrollPos < lastScrollPos && isScrolled) {
-      setIsScrolled(false);
+      setIsScrolled(false)
     } else if (currentScrollPos > lastScrollPos && !isScrolled) {
-      setIsScrolled(true);
+      setIsScrolled(true)
     }
-    setLastScrollPos(currentScrollPos);
-  };
+    setLastScrollPos(currentScrollPos)
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll]);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [handleScroll])
 
-  return [isScrolled, lastScrollPos];
+  return [isScrolled, lastScrollPos]
 }

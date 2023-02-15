@@ -1,16 +1,15 @@
-import { useContext } from "react";
-import clsx from "clsx";
-import { Basket, OctopusLogo } from "../svg";
-import { BasketContext } from "../../pages/product/[id]";
-import { useScrollHandler } from "../../hooks/useScrollHandler"
+import React, { useContext } from 'react'
+import clsx from 'clsx'
+import { Basket, OctopusLogo } from '../svg'
+import { BasketContext } from '../../pages/product/[id]'
+import { useScrollHandler } from '../../hooks/useScrollHandler'
 
 const Header = () => {
-
   const [isScrolled] = useScrollHandler()
 
   const headerClasses = clsx(
-    "fixed z-10 w-full h-24 px-5 flex bg-siphon ease-in-out duration-300",
-    { "translate-y-0": !isScrolled, "-translate-y-24": isScrolled }
+    'fixed z-10 w-full h-24 px-5 flex bg-siphon ease-in-out duration-300',
+    { 'translate-y-0': !isScrolled, '-translate-y-24': isScrolled }
   )
 
   const basketTotal = useContext(BasketContext)
@@ -25,7 +24,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
