@@ -8,7 +8,8 @@
     "start": "next start",
     "server": "yarn run json-graphql-server ../server/db.js --p 3001",
     "test": "jest",
-    "build-svg": "npx @svgr/cli --filename-case camel --typescript --out-dir components/svg/ --ignore-existing -- public/"
+    "build-svg": "npx @svgr/cli --filename-case camel --typescript --out-dir components/svg/ --ignore-existing -- public/",
+    "lint": "eslint --ext .ts,.tsx ."
   },
   "dependencies": {
     "@apollo/client": "^3.7.7",
