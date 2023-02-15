@@ -1,4 +1,4 @@
 import Cart from './cart'
 
-export {Cart}
+export { Cart }
 export default Cart
