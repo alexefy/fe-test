@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import clsx from 'clsx'
 import { Basket, OctopusLogo } from '../svg'
 import { BasketContext } from '../../pages/product/[id]'

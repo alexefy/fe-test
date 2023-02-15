@@ -1,8 +1,12 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import Button from '../button'
 
-const Quantity = ({ updateQtySelected }) => {
+export interface QuantityProps {
+  updateQtySelected: (quantity: number) => void
+}
+
+const Quantity = ({ updateQtySelected }: QuantityProps) => {
   const [quantity, setQuantity] = useState(1)
   const addQuantity = () => quantity < 5 ? setQuantity(quantity + 1) : setQuantity(5)
   const minusQuantity = () => quantity > 1 ? setQuantity(quantity - 1) : setQuantity(1)

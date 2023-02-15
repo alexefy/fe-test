@@ -31,9 +31,9 @@ const Product = () => {
   useProduct(data)
 
   if (loading) return <Layout><Loader /></Layout>
-  if (error) return <Layout><Container><p className="pt-[150px]">Error with connection</p></Container></Layout>
+  if (error != null) return <Layout><Container><p className="pt-[150px]">Error with connection</p></Container></Layout>
 
-  if (!data) {
+  if (data == null) {
     return <Layout><Container><p className="pt-[150px]">{'No Products found'}</p></Container></Layout>
   }
 
@@ -43,7 +43,7 @@ const Product = () => {
     <Layout>
       <Container>
         <div className="flex flex-wrap gap-5 pt-[100px] pb-10">
-          {allProducts && allProducts.map((product) => (
+          {allProducts?.map((product) => (
             <section className="w-full p-5 sm:p-0 sm:w-[calc(50%_-_1.25rem)]" key={product.id}>
               <Link href={`/product/${product.id}`}>
                 <a>

@@ -1,3 +1,4 @@
+import React from 'react'
 import { render, fireEvent, waitFor } from '@testing-library/react'
 import ProductDetail, { GET_PRODUCT } from '../pages/product/[id]'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'

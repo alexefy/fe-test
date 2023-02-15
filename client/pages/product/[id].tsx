@@ -39,7 +39,7 @@ export interface ProductData {
     description: string
     img_url: string
     quantity: number
-    power: number
+    power: string
     price: number
     brand: string
     weight: number
@@ -74,16 +74,16 @@ const ProductDetail = () => {
   useProduct(data)
 
   if (loading) return <Layout><Loader /></Layout>
-  if (error) return <Layout><Container><p className="pt-[150px]">Error with connection</p></Container></Layout>
+  if (error != null) return <Layout><Container><p className="pt-[150px]">Error with connection</p></Container></Layout>
 
-  if (!data) {
-    return <Layout><Container><p className="pt-[150px]">{`No Product found with id:${id}`}</p></Container></Layout>
+  if (data == null) {
+    return <Layout><Container><p className="pt-[150px]">No Product found</p></Container></Layout>
   }
 
   const {
     id: productId,
     name,
-    img_url,
+    img_url: imgUrl,
     quantity,
     power,
     price,
@@ -93,7 +93,7 @@ const ProductDetail = () => {
     height,
     width,
     length,
-    model_code,
+    model_code: modelCode,
     colour
   } = data.Product
 
@@ -108,7 +108,7 @@ const ProductDetail = () => {
               <section className="px-5 pb-5 pt-[100px]" key={productId}>
                 <ImageWrapper
                   objectFit="contain"
-                  src={img_url}
+                  src={imgUrl}
                   altText={name}
                   hasRoundedCorners
                 />
@@ -142,7 +142,7 @@ const ProductDetail = () => {
               <dt className="w-1/2 mb-2">Brand</dt><dd className="w-1/2 mb-2">{brand}</dd>
               <dt className="w-1/2 mb-2">Item weight (g)</dt><dd className="w-1/2 mb-2">{weight}</dd>
               <dt className="w-1/2 mb-2">Dimensions (cm)</dt><dd className="w-1/2 mb-2">{`${height} x ${width} x ${length}`}</dd>
-              <dt className="w-1/2 mb-2">Item Model number</dt><dd className="w-1/2 mb-2">{model_code}</dd>
+              <dt className="w-1/2 mb-2">Item Model number</dt><dd className="w-1/2 mb-2">{modelCode}</dd>
               <dt className="w-1/2 mb-2">Colour</dt><dd className="w-1/2 mb-2">{colour}</dd>
             </dl>
             </section>

@@ -17,6 +17,12 @@ module.exports = {
   "plugins": [
       "react"
   ],
+  "rules": {
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/triple-slash-reference": "off"
+  },
   "settings": {
       "react": {
         "version": "detect"
