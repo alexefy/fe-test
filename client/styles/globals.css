@@ -1,23 +1,23 @@
 /* Octopus Energy brand colours used in the design */
-:root {
-  --hemocyanin: #180048;
-  --ice: #f0ffff;
-  --plum: #600e6b;
-  --purpleHaze: #a49fc8;
-  --siphon: #100030;
-  --sohoLights: #f050f8;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer {
+  html,
+  body {
+    @apply text-ice;
+  }
+
+  body {
+    @apply bg-siphon;
+  }
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: Gotham, helvetica, arial, sans-serif;
-  color: var(--ice);
-}
-
-body {
-  background: var(--siphon);
+.spinner-border {
+  vertical-align: -0.125em;
+  border: 0.25em solid;
+  border-right-color: transparent;
 }
 
 .home {
