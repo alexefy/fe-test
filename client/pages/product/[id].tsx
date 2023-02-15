@@ -1,15 +1,15 @@
-import React, { useState, createContext } from "react"
-import { useRouter } from "next/router"
-import { useQuery } from "@apollo/client"
-import gql from "graphql-tag"
-import { useProduct } from "../../hooks/useProduct"
-import Layout from "../../components/layout"
-import ImageWrapper from "../../components/imageWrapper"
-import Quantity from "../../components/quantity"
-import Button from "../../components/button"
-import Specification from "../../components/specification"
-import { Container } from "../../components/container"
-import Loader from "../../components/loader"
+import React, { useState, createContext } from 'react'
+import { useRouter } from 'next/router'
+import { useQuery } from '@apollo/client'
+import gql from 'graphql-tag'
+import { useProduct } from '../../hooks/useProduct'
+import Layout from '../../components/layout'
+import ImageWrapper from '../../components/imageWrapper'
+import Quantity from '../../components/quantity'
+import Button from '../../components/button'
+import Specification from '../../components/specification'
+import { Container } from '../../components/container'
+import Loader from '../../components/loader'
 
 export const GET_PRODUCT = gql`
   query GetProduct($id: ID!) {
@@ -30,7 +30,7 @@ export const GET_PRODUCT = gql`
       colour
     }
   }
-`;
+`
 
 export interface ProductData {
   Product: {
@@ -48,36 +48,36 @@ export interface ProductData {
     length: number
     model_code: string
     colour: string
-  };
+  }
 }
 
 export const BasketContext = createContext({
   qtySelected: 0,
   itemsInBasket: 0,
-  updateQtySelected: (value: number) => {},
+  updateQtySelected: (value: number) => {}
 })
 
 const ProductDetail = () => {
-  const router = useRouter();
-  const { id } = router.query;
+  const router = useRouter()
+  const { id } = router.query
   const { data, loading, error } = useQuery<ProductData>(GET_PRODUCT, {
-    variables: { id },
+    variables: { id }
   })
 
-  const [qtySelected, setQtySelected] = useState(0);
-  const [basket, setBasket] = useState(0);
+  const [qtySelected, setQtySelected] = useState(0)
+  const [basket, setBasket] = useState(0)
 
   const updateQtySelected = (value: number) => {
-    setQtySelected(value);
+    setQtySelected(value)
   }
 
-  useProduct(data);
+  useProduct(data)
 
-  if (loading) return <Layout><Loader /></Layout>;
-  if (error) return <Layout><Container><p className="pt-[150px]">Error with connection</p></Container></Layout>;
+  if (loading) return <Layout><Loader /></Layout>
+  if (error) return <Layout><Container><p className="pt-[150px]">Error with connection</p></Container></Layout>
 
   if (!data) {
-    return <Layout><Container><p className="pt-[150px]">{`No Product found with id:${id}`}</p></Container></Layout>;
+    return <Layout><Container><p className="pt-[150px]">{`No Product found with id:${id}`}</p></Container></Layout>
   }
 
   const {
@@ -94,8 +94,8 @@ const ProductDetail = () => {
     width,
     length,
     model_code,
-    colour,
-  } = data.Product;
+    colour
+  } = data.Product
 
   return (
     <BasketContext.Provider
@@ -137,7 +137,7 @@ const ProductDetail = () => {
 
             <Container>
             <section className="p-5">
-              <h2  className="text-4xl mb-5">Specification</h2>
+              <h2 className="text-4xl mb-5">Specification</h2>
               <dl className="flex flex-wrap justify-between">
               <dt className="w-1/2 mb-2">Brand</dt><dd className="w-1/2 mb-2">{brand}</dd>
               <dt className="w-1/2 mb-2">Item weight (g)</dt><dd className="w-1/2 mb-2">{weight}</dd>
@@ -151,7 +151,7 @@ const ProductDetail = () => {
         )}
       </Layout>
     </BasketContext.Provider>
-  );
-};
+  )
+}
 
-export default ProductDetail;
+export default ProductDetail

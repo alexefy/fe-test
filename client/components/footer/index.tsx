@@ -1,4 +1,4 @@
 import Footer from './footer'
 
-export {Footer}
+export { Footer }
 export default Footer

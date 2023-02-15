@@ -1,12 +1,12 @@
-import React from "react"
-import Link from "next/link"
-import { useQuery } from "@apollo/client"
-import gql from "graphql-tag"
-import { useProduct } from "../../hooks/useProduct"
-import Layout from "../../components/layout"
-import ImageWrapper from "../../components/imageWrapper"
-import Container from "../../components/container"
-import Loader from "../../components/loader"
+import React from 'react'
+import Link from 'next/link'
+import { useQuery } from '@apollo/client'
+import gql from 'graphql-tag'
+import { useProduct } from '../../hooks/useProduct'
+import Layout from '../../components/layout'
+import ImageWrapper from '../../components/imageWrapper'
+import Container from '../../components/container'
+import Loader from '../../components/loader'
 
 export const GET_PRODUCTS = gql`
   query GetProducts {
@@ -16,7 +16,7 @@ export const GET_PRODUCTS = gql`
       img_url
     }
   }
-`;
+`
 
 export interface ProductsData {
   allProducts: Array<{
@@ -27,17 +27,17 @@ export interface ProductsData {
 }
 
 const Product = () => {
-  const { data, loading, error } = useQuery<ProductsData>(GET_PRODUCTS);
-  useProduct(data);
+  const { data, loading, error } = useQuery<ProductsData>(GET_PRODUCTS)
+  useProduct(data)
 
-  if (loading) return <Layout><Loader /></Layout>;
-  if (error) return <Layout><Container><p className="pt-[150px]">Error with connection</p></Container></Layout>;
+  if (loading) return <Layout><Loader /></Layout>
+  if (error) return <Layout><Container><p className="pt-[150px]">Error with connection</p></Container></Layout>
 
   if (!data) {
-    return <Layout><Container><p className="pt-[150px]">{`No Products found`}</p></Container></Layout>;
+    return <Layout><Container><p className="pt-[150px]">{'No Products found'}</p></Container></Layout>
   }
 
-  const { allProducts } = data;
+  const { allProducts } = data
 
   return (
     <Layout>
@@ -56,7 +56,7 @@ const Product = () => {
         </div>
       </Container>
     </Layout>
-  );
-};
+  )
+}
 
-export default Product;
+export default Product

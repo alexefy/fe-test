@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Home () {
   return (
     <main>
       <div className="home">
@@ -10,10 +10,10 @@ export default function Home() {
         </figure>
         <h1>Welcome to the Octopus Energy Frontend code test!</h1>
         <p>
-          Get started by visiting the <code>/product</code> URL and editing{" "}
+          Get started by visiting the <code>/product</code> URL and editing{' '}
           <code>client/pages/product.js</code>
         </p>
       </div>
     </main>
-  );
+  )
 }

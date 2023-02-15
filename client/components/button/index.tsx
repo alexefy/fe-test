@@ -1,4 +1,4 @@
 import Button from './button'
 
-export {Button}
+export { Button }
 export default Button
